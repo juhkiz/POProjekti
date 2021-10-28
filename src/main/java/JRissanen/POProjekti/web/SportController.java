@@ -28,5 +28,10 @@ public class SportController {
 		model.addAttribute("sports", sportRepo.findAll());
 		return "sportlist";
 	}
+	
+	@RequestMapping(value="/login")
+	public String login() {
+		return "login";
+	}
 
 }

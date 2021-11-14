@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Food</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+	<h1>Add Food</h1>
+	<div>
+		<form th:object="${sport}" th:action="@{saveSport}" action="#" method="post">
+		  	<label for="sportName">Sport</label>
+			<input type="text" id="sportName" th:field="*{sportName}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="calories">Consumption</label>
+			<input type="text" id="consumption" th:field="*{consumption}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" value="Save" class="btn btn-success"></input>
+		</form>
+	</div>
+</body>
+</html>

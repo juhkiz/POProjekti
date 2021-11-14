@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Frontpage</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+	<h2 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]!</h2>
+    <table class="table table-striped">
+		<tr>
+		    <th>Name</th>
+		    <th>Energy</th>
+		    <th>Time</th>
+		</tr>  
+    	<tr th:each = "food : ${foods}">
+    		<td th:text="${food.mealName}"></td>
+    		<td th:text="${food.calories}"></td>
+    		<td th:text="${food.date}"></td>
+    	</tr>
+     </table>
+     <a href="/foodlist" class="btn btn-primary">View Foodlist Only</a>
+     <table class="table table-striped">
+		<tr>
+		    <th>Sport</th>
+		    <th>Consumption</th>
+		    <th>Time</th>
+		</tr>  
+    	<tr th:each = "sport : ${sports}">
+    		<td th:text="${sport.sportName}"></td>
+    		<td th:text="${sport.consumption}"></td>
+    		<td th:text="${sport.date}"></td>
+    	</tr>
+     </table>
+     <a href="/sportlist" class="btn btn-primary">View Sportlist Only</a>
+     <p></p>
+     <p></p>
+     <a href="/addsport" class="btn btn-success">Add Sport</a>
+     <a href="/addfood" class="btn btn-success">Add Food</a>
+</body>
+</html>

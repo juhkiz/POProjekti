@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import JRissanen.POProjekti.domain.User;
+import JRissanen.POProjekti.domain.Food;
 import JRissanen.POProjekti.domain.FoodRepository;
 import JRissanen.POProjekti.domain.Sport;
 import JRissanen.POProjekti.domain.SportRepository;
@@ -36,6 +37,7 @@ public class PoProjektiApplication {
 			sportRepo.save(new Sport("Boxing", 100));
 			sportRepo.save(new Sport("Running", 200));
 			sportRepo.save(new Sport("Walking", 500));
+			foodRepo.save(new Food("Lunch", 500));
 			
 			log.info("fetch all sports");
 			for (Sport sport : sportRepo.findAll())

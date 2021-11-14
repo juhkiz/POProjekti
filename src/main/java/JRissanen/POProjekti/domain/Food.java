@@ -1,31 +1,38 @@
 package JRissanen.POProjekti.domain;
 
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Food {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	private LocalDate date = LocalDate.now();
 	private String mealName;
 	private int calories;
+
 	
 	public Food(){}
 	
-	public Food(Long id, String mealName, int calories) {
+	public Food(String mealName, int calories) {
 		super();
-		this.id = id;
 		this.mealName = mealName;
 		this.calories = calories;
 	}
 
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+	
 	public Long getId() {
 		return id;
 	}

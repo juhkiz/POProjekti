@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-    <title>Sportlist</title>
+    <title>Foodlist</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
      <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
@@ -10,12 +10,13 @@
     <table class="table table-striped">
 		<tr>
 		    <th>Name</th>
-		    <th>Consumption</th>
+		    <th>Energy</th>
+		    <th>Time</th>
 		</tr>  
-    	<tr th:each = "sport : ${sports}">
-    		<td th:text="${sport.sportName}"></td>
-    		<td th:text="${sport.consumption}"></td>
-    		<td th:text="${sport.date}"></td>
+    	<tr th:each = "food : ${foods}">
+    		<td th:text="${food.mealName}"></td>
+    		<td th:text="${food.calories}"></td>
+    		<td th:text="${food.date}"></td>
     	</tr>
      </table>
 </body>

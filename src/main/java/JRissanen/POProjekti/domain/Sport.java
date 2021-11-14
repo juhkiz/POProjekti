@@ -1,13 +1,11 @@
 package JRissanen.POProjekti.domain;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Sport {
@@ -16,6 +14,7 @@ public class Sport {
 	private Long id;
 	private String sportName;
 	private int consumption;
+	private LocalDate date = LocalDate.now();
 	
 	public Sport(){}
 	
@@ -24,6 +23,15 @@ public class Sport {
 		this.sportName = sportName;
 		this.consumption = consumption;
 	}
+	
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+	
 	public Long getId() {
 		return id;
 	}

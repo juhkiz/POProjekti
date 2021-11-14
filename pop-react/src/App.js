@@ -1,11 +1,13 @@
 import './App.css';
 import React from 'react';
-import Summary from './Components/Summary'
+import SportsSummary from './Components/SportsSummary';
+import FoodsSummary from './Components/FoodsSummary';
 
 function App() {
   return (
     <div className="App">
-      <Summary/>
+      <SportsSummary />
+      <FoodsSummary />
     </div>
   );
 }

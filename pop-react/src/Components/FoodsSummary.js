@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
 
-function Summary() {
+function FoodsSummary() {
 
 
     // React state variable to hold data, set to null // 
@@ -15,11 +15,11 @@ function Summary() {
     const fetchTiedot = async () => {
 
         // Api request to fetch data // 
-        const response = await fetch("http://localhost:8080/sports");
-        const data = await response.json();
+        const response = await fetch("http://localhost:8080/foods");
+        const sportsData = await response.json();
 
         // store the data into variable
-        setTiedot(data);
+        setTiedot(sportsData);
     }
     console.log(tiedot)
 
@@ -32,14 +32,14 @@ function Summary() {
                 <div>
                     {tiedot.map((tiedot) => (
                         <div key={tiedot.id}>
-                            <Card sx={{ minWidth: 275 }}>
+                            <Card sx={{ minWidth: 275, maxWidth: 280 }}>
                                 <CardContent>
-                                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                    <Typography variant="h5" component="div">
                                         {tiedot.date}
                                     </Typography>
                                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                        {tiedot.sportName} <br/>
-                                        {tiedot.consumption}
+                                        {tiedot.mealName} <br />
+                                        {tiedot.calories}
                                     </Typography>
                                 </CardContent>
                             </Card>
@@ -51,4 +51,4 @@ function Summary() {
     )
 }
 
-export default Summary
+export default FoodsSummary

@@ -11,7 +11,7 @@ function FrontPage() {
          elevation={3}
         >
         <div>
-            <h2>Welcome to my food and sport saving project!</h2>
+            <h3>This part is just practicing how to use React with Spring Rest api</h3>
         </div>
             </Paper>
             </div>

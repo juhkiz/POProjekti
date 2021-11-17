@@ -11,6 +11,8 @@ import JRissanen.POProjekti.domain.User;
 import JRissanen.POProjekti.domain.Food;
 import JRissanen.POProjekti.domain.FoodRepository;
 import JRissanen.POProjekti.domain.Sport;
+import JRissanen.POProjekti.domain.SportData;
+import JRissanen.POProjekti.domain.SportDataRepository;
 import JRissanen.POProjekti.domain.SportRepository;
 import JRissanen.POProjekti.domain.UserRepository;
 
@@ -24,7 +26,7 @@ public class PoProjektiApplication {
 	}
 
 	@Bean
-	public CommandLineRunner SportDataDemo(FoodRepository foodRepo, SportRepository sportRepo, UserRepository userRepo)
+	public CommandLineRunner SportDataDemo(FoodRepository foodRepo, SportRepository sportRepo, UserRepository userRepo, SportDataRepository dataRepo)
 	{
 		return (args) -> {
 			
@@ -32,11 +34,17 @@ public class PoProjektiApplication {
 			User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
 			userRepo.save(user1);
 			userRepo.save(user2);
-			
-			sportRepo.save(new Sport("Boxing", 100));
-			sportRepo.save(new Sport("Running", 200));
-			sportRepo.save(new Sport("Walking", 500));
+			SportData boxing = new SportData("Boxing", 700);
+			SportData running = new SportData("Running", 400);
+			SportData gym = new SportData("Gym", 500);
+			dataRepo.save(boxing);
+			dataRepo.save(running);
+			dataRepo.save(gym);
+			sportRepo.save(new Sport(boxing, 2));
+			sportRepo.save(new Sport(running, 2));
+			sportRepo.save(new Sport(gym, 2));
 			foodRepo.save(new Food("Lunch", 500));
+			
 			
 			log.info("fetch all sports");
 			for (Sport sport : sportRepo.findAll())

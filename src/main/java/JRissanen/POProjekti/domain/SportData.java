@@ -34,10 +34,10 @@ public class SportData {
 		this.sportName = sportName;
 		this.consumption = consumption;
 	}
-	public Long getId() {
+	public Long getSportDataId() {
 		return sportDataId;
 	}
-	public void setId(Long id) {
+	public void setSportDataIdId(Long id) {
 		this.sportDataId = id;
 	}
 	public String getSportName() {
@@ -51,6 +51,12 @@ public class SportData {
 	}
 	public void setConsumption(int consumption) {
 		this.consumption = consumption;
+	}
+
+	@Override
+	public String toString() {
+		return "SportData [sportDataId=" + sportDataId + ", sportName=" + sportName + ", consumption=" + consumption
+				+ "]";
 	}
 	
 	

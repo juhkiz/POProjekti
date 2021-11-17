@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import JRissanen.POProjekti.domain.Sport;
+import JRissanen.POProjekti.domain.SportDataRepository;
 import JRissanen.POProjekti.domain.SportRepository;
 
 @CrossOrigin
@@ -25,6 +26,9 @@ public class SportController {
 	
 	@Autowired
 	private SportRepository sportRepo;
+	
+	@Autowired
+	private SportDataRepository dataRepo;
 	
 	@RequestMapping(value="/sportlist")
 	public String sportList(Model model) {
@@ -35,6 +39,7 @@ public class SportController {
 	@RequestMapping(value = "/addsport", method=RequestMethod.GET)
     public String addBook(Model model){
     	model.addAttribute("sport", new Sport());
+    	model.addAttribute("datalist", dataRepo.findAll());
         return "addsport";
     }
 	@RequestMapping(value = "/saveSport", method = RequestMethod.POST)
@@ -49,9 +54,11 @@ public class SportController {
 	@RequestMapping(value="/addsport", method=RequestMethod.POST)
 	public String sportSubmit(@Valid Sport sport, BindingResult bindingResult, Model model) {
 	 if (bindingResult.hasErrors()) {
+	    	model.addAttribute("datalist", dataRepo.findAll());
 	 return "addsport";
 	 }
 	 else {
+		model.addAttribute("datalist", dataRepo.findAll());
 		return "sportmessage";
 	 }
 	} 
@@ -64,6 +71,7 @@ public class SportController {
 	  @RequestMapping(value = "/edit/{id}")
 	    public String editBook(@PathVariable("id") Long sportId, Model model){
 	    	model.addAttribute("sport", sportRepo.findById(sportId));
+	    	model.addAttribute("datalist", dataRepo.findAll());
 	    	return "editsport";
 	    }
 	  @RequestMapping(value = "/save", method = RequestMethod.POST)

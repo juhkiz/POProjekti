@@ -38,8 +38,9 @@ function Summary() {
                                         {tiedot.date}
                                     </Typography>
                                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                        {tiedot.sportName} <br />
-                                        {tiedot.consumption}
+                                        {tiedot.sportData.sportName} <br />
+                                        {tiedot.duration} hrs <br />
+                                        Total calories burned: {tiedot.sportData.consumption * tiedot.duration} kcal
                                     </Typography>
                                 </CardContent>
                             </Card>

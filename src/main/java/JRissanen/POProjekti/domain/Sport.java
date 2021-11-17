@@ -20,9 +20,7 @@ public class Sport {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	@NotEmpty(message = "Sport name cannot be empty!")
-	private String sportName;
-	@Min(value = 1, message = "Consumption must be more than 0!")
+	@Min(value = 1, message = "Duration must be more than 0!")
 	private int duration;
 	private LocalDate date = LocalDate.now();
 	
@@ -33,10 +31,26 @@ public class Sport {
 	
 	public Sport(){}
 	
-	public Sport(String sportName, int consumption) {
+	public Sport(SportData sportData, int duration) {
 		super();
-		this.sportName = sportName;
-		this.duration = consumption;
+		this.sportData = sportData;
+		this.duration = duration;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public int getDuration() {
+		return duration;
+	}
+
+	public void setDuration(int duration) {
+		this.duration = duration;
 	}
 
 	public LocalDate getDate() {
@@ -46,30 +60,26 @@ public class Sport {
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
-	
-	public Long getId() {
-		return id;
+
+	public SportData getSportData() {
+		return sportData;
 	}
-	public String getSportName() {
-		return sportName;
-	}
-	public int getConsumption() {
-		return duration;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public void setSportName(String sportName) {
-		this.sportName = sportName;
-	}
-	public void setConsumption(int consumption) {
-		this.duration = consumption;
+
+	public void setSportData(SportData sportData) {
+		this.sportData = sportData;
 	}
 
 	@Override
 	public String toString() {
-		return "Sport [id=" + id + ", sportName=" + sportName + ", consumption=" + duration + "]";
+		if(this.sportData != null)
+			return 
+				"Sport [id=" + id + ", duration=" + duration + ", date=" + date + ", sportData=" + sportData + "]";
+		else
+			return 
+				"Sport [id=" + id + ", duration=" + duration + ", date=" + date+"]";
 	}
+	
+	
 	
 	
 }

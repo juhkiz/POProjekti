@@ -35,13 +35,6 @@ public class RepositoryTests {
 	}
 	
 	@Test
-	public void addNewSport(){
-		Sport sportTest = new Sport("Boxing", 200);
-		sportRepo.save(sportTest);
-		assertThat(sportTest.getId()).isNotNull();		
-	}
-	
-	@Test
 	public void findSportByDate() {
 		List<Sport> sports = sportRepo.findByDate(LocalDate.now());
 		assertThat(sports).hasSize(3);

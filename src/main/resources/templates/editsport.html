@@ -10,13 +10,16 @@
 	<div class="form-group">
 		<form th:object="${sport}" th:action="@{../save}" action="#" method="post">
 			<input type="hidden" th:field="*{id}" class="form-control"/>
-		  	<label for="sportName">Sport</label>
-			<input type="text" id="sportName" th:field="*{sportName}" />
+		  	<label for = "datalist">Sport</label>
+		  	<select id = "datalist" th:field = "*{sportData}" class="form-control-sm">
+				<option th:each="data: ${datalist}" th:value="${data.sportDataId}" th:text="${data.sportName}"></option>
+			</select>
 			<div style="clear: both; display: block; height: 10px;"></div>
-		  	<label for="consumption">Consumption</label>
-			<input type="text" id="consumption" th:field="*{consumption}" />
+		  	<label for="calories">Duration</label>
+			<input type="text" id="duration" th:field="*{duration}" />
+			<p th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}">Error</p>
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<input type="submit" value="Save Edits" class="btn btn-primary"></input>
+			<input type="submit" value="Save" class="btn btn-success"></input>
 		</form>
 	</div>
 </body>

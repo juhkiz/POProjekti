@@ -13,8 +13,8 @@
 		    <th>Consumption</th>
 		</tr>  
     	<tr th:each = "sport : ${sports}">
-    		<td th:text="${sport.sportName}"></td>
-    		<td th:text="${sport.consumption}"></td>
+    		<td th:text="${sport.sportData.sportName}"></td>
+    		<td th:text="${sport.duration}"></td>
     		<td th:text="${sport.date}"></td>
     		<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deletesport/{id}(id=${sport.id})}" class="btn btn-danger">Delete</a></td>
     		<td><a th:href="@{/edit/{id}(id=${sport.id})}" class="btn btn-dark">Edit</a></td>

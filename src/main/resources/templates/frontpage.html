@@ -24,13 +24,26 @@
      <table class="table table-striped">
 		<tr>
 		    <th>Sport</th>
+		    <th>Duration</th>
+		    <th>Date</th>
 		    <th>Consumption</th>
-		    <th>Time</th>
 		</tr>  
     	<tr th:each = "sport : ${sports}">
-    		<td th:text="${sport.sportName}"></td>
-    		<td th:text="${sport.consumption}"></td>
+    		<td th:text="${sport.sportData.sportName}"></td>
+    		<td th:text="${sport.duration}"></td>
     		<td th:text="${sport.date}"></td>
+    		<td id = "1"></td>
+    		<td>
+    		<Script th:inline="javascript">
+    			/*<![CDATA[*/
+    				var consumption = /*[[${sport.sportData.consumption}]]*/ "consumption";
+    				var duration = /*[[${sport.duration}]]*/ "duration";
+    				var sessionConsumption = consumption * duration;
+    				var mainDiv = document.getElementById("1").innerHTML = sessionConsumption;
+    				console.log(sessionConsumption)
+    				/*]]>*/
+    		</Script>
+    		</td>
     	</tr>
      </table>
      <a sec:authorize="hasAuthority('ADMIN')" href="/sportlist" class="btn btn-primary">Edit sportlist</a>

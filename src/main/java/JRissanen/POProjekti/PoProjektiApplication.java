@@ -12,7 +12,6 @@ import JRissanen.POProjekti.domain.Food;
 import JRissanen.POProjekti.domain.FoodRepository;
 import JRissanen.POProjekti.domain.Sport;
 import JRissanen.POProjekti.domain.SportRepository;
-import JRissanen.POProjekti.domain.TrainingSessionRepository;
 import JRissanen.POProjekti.domain.UserRepository;
 
 @SpringBootApplication
@@ -25,7 +24,7 @@ public class PoProjektiApplication {
 	}
 
 	@Bean
-	public CommandLineRunner SportDataDemo(FoodRepository foodRepo, SportRepository sportRepo, TrainingSessionRepository tsRepo, UserRepository userRepo)
+	public CommandLineRunner SportDataDemo(FoodRepository foodRepo, SportRepository sportRepo, UserRepository userRepo)
 	{
 		return (args) -> {
 			

@@ -10,6 +10,9 @@ function FoodsSummary() {
 
     // React state variable to hold data, set to null // 
     const [tiedot, setTiedot] = useState(null);
+    var calories = 0;
+
+    
 
     // we will use async/await to fetch this data // 
     const fetchTiedot = async () => {
@@ -31,7 +34,7 @@ function FoodsSummary() {
             {tiedot && (
                 <div>
                     {tiedot.map((tiedot) => (
-                        <div key={tiedot.id}>
+                        <div key={tiedot.date}>
                             <Card sx={{ minWidth: 275, maxWidth: 280 }}>
                                 <CardContent>
                                     <Typography variant="h5" component="div">
@@ -39,7 +42,10 @@ function FoodsSummary() {
                                     </Typography>
                                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                                         {tiedot.mealName} <br />
-                                        {tiedot.calories}
+                                        {tiedot.calories} <br />
+                                    </Typography>
+                                    <Typography sx={{ fontSize: 14}} color="text.secondary" gutterBottom>
+                                        {calories += tiedot.calories}
                                     </Typography>
                                 </CardContent>
                             </Card>
@@ -47,6 +53,7 @@ function FoodsSummary() {
                     ))}
                 </div>
             )}
+            {"Total calories for the whole day: " + calories}
         </div>
     )
 }

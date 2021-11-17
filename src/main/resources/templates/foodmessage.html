@@ -1,28 +1,23 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add Food</title>
+    <title>Getting Started: Handling Form Submission</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
 <body>
-	<h1>Add Food</h1>
 	<div>
-		<form th:object="${food}" th:action="@{addfood}" action="#" method="post">
+		<h2>Are you sure you want to save?</h2>
+		<form th:object="${food}" th:action="@{saveFood}" action="#" method="post">
 		  	<label for="mealName">Meal name (Lunch, Breakfast etc)</label>
 			<input type="text" id="mealName" th:field="*{mealName}" />
 			<p th:if="${#fields.hasErrors('mealName')}" th:errors="*{mealName}">Error</p>
 			<div style="clear: both; display: block; height: 10px;"></div>
 		  	<label for="calories">Calories</label>
 			<input type="text" id="calories" th:field="*{calories}" />
-			<p th:if="${#fields.hasErrors('calories')}" th:errors="*{calories}">Error</p>
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<input type="submit" value="Submit" class="btn btn-success"></input>
+			<input type="submit" value="Save" class="btn btn-success"></input>
 		</form>
 	</div>
 </body>
 </html>
-
-
-        
-        

@@ -1,28 +1,23 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add Food</title>
+    <title>Edit food</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
 <body>
-	<h1>Add Food</h1>
-	<div>
-		<form th:object="${food}" th:action="@{addfood}" action="#" method="post">
-		  	<label for="mealName">Meal name (Lunch, Breakfast etc)</label>
+	<h1>Edit Food</h1>
+	<div class="form-group">
+		<form th:object="${food}" th:action="@{../savefood}" action="#" method="post">
+			<input type="hidden" th:field="*{id}" class="form-control"/>
+		  	<label for="mealName">Meal name</label>
 			<input type="text" id="mealName" th:field="*{mealName}" />
-			<p th:if="${#fields.hasErrors('mealName')}" th:errors="*{mealName}">Error</p>
 			<div style="clear: both; display: block; height: 10px;"></div>
 		  	<label for="calories">Calories</label>
 			<input type="text" id="calories" th:field="*{calories}" />
-			<p th:if="${#fields.hasErrors('calories')}" th:errors="*{calories}">Error</p>
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<input type="submit" value="Submit" class="btn btn-success"></input>
+			<input type="submit" value="Save Edits" class="btn btn-primary"></input>
 		</form>
 	</div>
 </body>
 </html>
-
-
-        
-        

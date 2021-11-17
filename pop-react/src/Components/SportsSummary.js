@@ -31,7 +31,7 @@ function Summary() {
             {tiedot && (
                 <div>
                     {tiedot.map((tiedot) => (
-                        <div key={tiedot.id}>
+                        <div key={tiedot.date}>
                             <Card sx={{ minWidth: 275, maxWidth: 280 }}>
                                 <CardContent>
                                     <Typography variant="h5" component="div">

@@ -20,7 +20,7 @@
     		<td th:text="${food.date}"></td>
     	</tr>
      </table>
-     <a href="/foodlist" class="btn btn-primary">View Foodlist Only</a>
+     <a sec:authorize="hasAuthority('ADMIN')" href="/foodlist" class="btn btn-primary">Edit foodlist</a>
      <table class="table table-striped">
 		<tr>
 		    <th>Sport</th>
@@ -33,7 +33,7 @@
     		<td th:text="${sport.date}"></td>
     	</tr>
      </table>
-     <a href="/sportlist" class="btn btn-primary">View Sportlist Only</a>
+     <a sec:authorize="hasAuthority('ADMIN')" href="/sportlist" class="btn btn-primary">Edit sportlist</a>
      <p></p>
      <p></p>
      <a href="/addsport" class="btn btn-success">Add Sport</a>

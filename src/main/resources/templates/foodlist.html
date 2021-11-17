@@ -17,7 +17,10 @@
     		<td th:text="${food.mealName}"></td>
     		<td th:text="${food.calories}"></td>
     		<td th:text="${food.date}"></td>
+    		<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${food.id})}" class="btn btn-danger">Delete</a></td>
+    		<td><a th:href="@{/editfood/{id}(id=${food.id})}" class="btn btn-dark">Edit</a></td>
     	</tr>
      </table>
+     <a href="/frontpage" class="btn btn-primary">Back to frontpage</a>
 </body>
 </html>

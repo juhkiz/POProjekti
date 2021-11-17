@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -13,7 +15,9 @@ public class Food {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private LocalDate date = LocalDate.now();
+	@Size(min=5,max=10, message = "Meal name should be between 5 and 10 letters")
 	private String mealName;
+	@Min(value = 1, message = "Calories must be more than 0!")
 	private int calories;
 
 	

@@ -14,6 +14,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import JRissanen.POProjekti.domain.Food;
 import JRissanen.POProjekti.domain.FoodRepository;
 import JRissanen.POProjekti.domain.Sport;
+import JRissanen.POProjekti.domain.SportData;
+import JRissanen.POProjekti.domain.SportDataRepository;
 import JRissanen.POProjekti.domain.SportRepository;
 
 
@@ -27,6 +29,9 @@ public class RepositoryTests {
 	@Autowired
 	private FoodRepository foodRepo;
 	
+	@Autowired
+	private SportDataRepository dataRepo;
+	
 	@Test
 	public void addNewFood(){
 		Food foodTest = new Food("Breakfast", 100);
@@ -35,29 +40,28 @@ public class RepositoryTests {
 	}
 	
 	@Test
-	public void findSportByDate() {
-		List<Sport> sports = sportRepo.findByDate(LocalDate.now());
-		assertThat(sports).hasSize(3);
+	public void addNewSport(){
+		SportData dataTest = new SportData("Sportdatatest", 500);
+		dataRepo.save(dataTest);
+		assertThat(dataTest.getSportDataId()).isNotNull();
+		Sport sportTest = new Sport(dataTest, 2);
+		sportRepo.save(sportTest);
+		assertThat(sportTest.getId()).isNotNull();
 	}
 	
-	/*@Test
-	public void deleteBook() {
-		Book bookTest = new Book("Test1", "Testaaja", 2001, "TESTI123", 12.43, new Category("Testi"));
-		bRepository.save(bookTest);
-		long testId = bookTest.getId();
-		assertThat(bookTest.getId()).isNotNull();
-		bRepository.deleteById(bookTest.getId());
-		assertThat(bRepository.findById(testId).equals(null)); // lisätään ensin kirja, ja tallennetaan sille id arvo. Tämän jälkeen testataan että kyseiselle kirjalle on syntynyt id arvo (1. assertti).
-																// Sitten kirja poistetaan kyseistä id:tä käyttämällä ja testataan vielä, että palauttaako kyseinen id null arvon -> kirja poistunut
-	}*/
+	@Test
+	public void findSportByDate() {
+		List<Sport> sports = sportRepo.findByDate(LocalDate.now());
+		assertThat(sports).hasSize(3); // Commandlinerunnerilla lisätään aluksi 3 urheilusuoritusta siksi hassize3
+	}
 	
-	/*@Test
-	public void deleteCategory() {
-		Category categTest = new Category("CategTesti");
-		cRepository.save(categTest);
-		long testId = categTest.getCategoryid();
-		assertThat(categTest.getCategoryid()).isNotNull();
-		cRepository.deleteById(categTest.getCategoryid());
-		assertThat(cRepository.findById(testId).equals(null)); 
-	}*/
+	@Test
+	public void deleteSport() {
+		Sport sportTest = new Sport(new SportData("testilaji", 100),2);
+		sportRepo.save(sportTest);
+		long testId = sportTest.getId();
+		assertThat(sportTest.getId()).isNotNull();
+		sportRepo.deleteById(sportTest.getId());
+		assertThat(sportRepo.findById(testId).equals(null));
+	}
 }
